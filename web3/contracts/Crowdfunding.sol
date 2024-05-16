@@ -67,3 +67,17 @@ contract CrowdFunding {
         return allCampaigns;
     }
 }
+
+    function deleteCampaign(uint256 _id) public {
+        Campaign storage campaign = campaigns[_id];
+        require(msg.sender == campaign.owner, "Only the owner can delete the campaign.");
+        require(block.timestamp < campaign.deadline, "Cannot delete campaign after the deadline.");
+
+        delete campaigns[_id];
+
+        // Decrement the number of campaigns if the last campaign is deleted
+        if (_id == numberOfCampaigns - 1) {
+            numberOfCampaigns--;
+        }
+    }
+}
