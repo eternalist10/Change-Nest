@@ -89,6 +89,11 @@ export const StateContextProvider = ({ children }) => {
     return parsedDonations;
   };
 
+    const deleteCampaign = async (id) => {
+        const tx = await contract.deleteCampaign(id);
+        await tx.wait();
+    };
+
   return (
     <StateContext.Provider
       value={{
@@ -97,6 +102,7 @@ export const StateContextProvider = ({ children }) => {
         connect,
         createCampaign: publishCampaign,
         getCampaigns,
+        deleteCampaign,
         getUserCampaigns,
         donate,
         getDonations,
