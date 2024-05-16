@@ -33,6 +33,13 @@ function CampaignDetails() {
     setIsLoading(false);
   };
 
+  const handleDelete = async () => {
+    setIsLoading(true);
+    await deleteCampaign(state.pId);
+    navigate("/");
+    setIsLoading(false);
+  };
+
   return (
     <div>
       {isLoading && <Loader />}
