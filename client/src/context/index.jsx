@@ -12,7 +12,7 @@ const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
   const { contract } = useContract(
-    "0xdD9D9CDd491e528A2df1341473E2a755813F5EaE"
+    "0x0D9F11B276bcF39Cd6cd2A552b848C1ae7E5a978"
   );
   const { mutateAsync: createCampaign } = useContractWrite(
     contract,
@@ -89,10 +89,10 @@ export const StateContextProvider = ({ children }) => {
     return parsedDonations;
   };
 
-    const deleteCampaign = async (id) => {
-        const tx = await contract.deleteCampaign(id);
-        await tx.wait();
-    };
+  const deleteCampaign = async (id) => {
+    const tx = await contract.deleteCampaign(id);
+    await tx.wait();
+  };
 
   return (
     <StateContext.Provider
@@ -105,7 +105,7 @@ export const StateContextProvider = ({ children }) => {
         getUserCampaigns,
         donate,
         getDonations,
-        deleteCampaign
+        deleteCampaign,
       }}
     >
       {children}

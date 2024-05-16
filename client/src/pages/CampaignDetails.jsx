@@ -10,7 +10,8 @@ import { CountBox, CustomButton, Loader } from "../components";
 function CampaignDetails() {
   const { state } = useLocation();
   const navigate = useNavigate();
-  const { donate, getDonations, deleteCampaign, contract, address } = useStateContext();
+  const { donate, getDonations, deleteCampaign, contract, address } =
+    useStateContext();
   const [isLoading, setIsLoading] = useState(false);
   const [amount, setAmount] = useState("");
   const [donators, setDonators] = useState([]);
@@ -182,13 +183,14 @@ function CampaignDetails() {
             </div>
           </div>
 
-        {address === state.owner && (
+          {address === state.owner && (
             <div className="mt-[20px] flex flex-col p-4 bg-[#1c1c24] rounded-[10px]">
               <h4 className="font-epilogue font-semibold text-[18px] leading-[22px] text-white">
                 Delete Campaign
               </h4>
               <p className="mt-[20px] font-epilogue font-normal leading-[22px] text-[#808191]">
-                Warning: This action cannot be undone. Deleting a campaign will remove it permanently.
+                Warning: This action cannot be undone. Deleting a campaign will
+                remove it permanently.
               </p>
               <CustomButton
                 btnType="button"
