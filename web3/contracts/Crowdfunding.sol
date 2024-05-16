@@ -66,7 +66,6 @@ contract CrowdFunding {
 
         return allCampaigns;
     }
-}
 
     function deleteCampaign(uint256 _id) public {
         Campaign storage campaign = campaigns[_id];
