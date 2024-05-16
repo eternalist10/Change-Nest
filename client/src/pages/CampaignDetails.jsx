@@ -10,7 +10,7 @@ import { CountBox, CustomButton, Loader } from "../components";
 function CampaignDetails() {
   const { state } = useLocation();
   const navigate = useNavigate();
-  const { donate, getDonations, deleteCampaign, contract, address } = useStateContext();
+  const { donate, getDonations, contract, address } = useStateContext();
   const [isLoading, setIsLoading] = useState(false);
   const [amount, setAmount] = useState("");
   const [donators, setDonators] = useState([]);
