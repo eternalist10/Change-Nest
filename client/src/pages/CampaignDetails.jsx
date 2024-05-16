@@ -36,12 +36,8 @@ function CampaignDetails() {
 
   const handleDelete = async () => {
     setIsLoading(true);
-    try {
-      await deleteCampaign(state.pId);
-      navigate("/");
-    } catch (error) {
-      console.error("Delete campaign failed:", error);
-    }
+    await deleteCampaign(state.pId);
+    navigate("/");
     setIsLoading(false);
   };
 
