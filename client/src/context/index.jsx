@@ -20,7 +20,22 @@ export const StateContextProvider = ({ children }) => {
   );
 
   const address = useAddress(); //Address of smart wallet
-  const connect = useMetamask(); //Connecting a smart wallet
+  // const connect = useMetamask(); //Connecting a smart wallet
+  const connectWithMetamask = useMetamask();
+
+  const connect = async () => {
+    if (window.ethereum && window.ethereum.isMetaMask) {
+      try {
+        await connectWithMetamask();
+      } catch (error) {
+        console.error("Connection failed", error);
+      }
+    } else {
+      // If using MetaMask mobile
+      const deepLink = `https://metamask.app.link/dapp/${window.location.href}`;
+      window.location.href = deepLink;
+    }
+  };
 
   const publishCampaign = async (form) => {
     try {
