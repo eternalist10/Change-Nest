@@ -102,10 +102,10 @@ export const StateContextProvider = ({ children }) => {
         connect,
         createCampaign: publishCampaign,
         getCampaigns,
-        deleteCampaign,
         getUserCampaigns,
         donate,
         getDonations,
+        deleteCampaign
       }}
     >
       {children}
