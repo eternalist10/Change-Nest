@@ -177,6 +177,23 @@ function CampaignDetails() {
               ></CustomButton>
             </div>
           </div>
+
+        {address === state.owner && (
+            <div className="mt-[20px] flex flex-col p-4 bg-[#1c1c24] rounded-[10px]">
+              <h4 className="font-epilogue font-semibold text-[18px] leading-[22px] text-white">
+                Delete Campaign
+              </h4>
+              <p className="mt-[20px] font-epilogue font-normal leading-[22px] text-[#808191]">
+                Warning: This action cannot be undone. Deleting a campaign will remove it permanently.
+              </p>
+              <CustomButton
+                btnType="button"
+                title="Delete Campaign"
+                styles="w-full bg-[#ff4d4d] mt-[20px]"
+                handleClick={handleDelete}
+              ></CustomButton>
+            </div>
+          )}
         </div>
       </div>
     </div>
