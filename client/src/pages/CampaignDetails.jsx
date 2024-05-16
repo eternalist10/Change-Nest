@@ -37,6 +37,7 @@ function CampaignDetails() {
   const handleDelete = async () => {
     setIsLoading(true);
     await deleteCampaign(state.pId);
+    alert("Campaign Deleted");
     navigate("/");
     setIsLoading(false);
   };
