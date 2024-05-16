@@ -1,4 +1,4 @@
-import React, { useContext, createContext } from "react";
+import React, { useContext, createContext, useState } from "react";
 import {
   useAddress,
   useContract,
@@ -19,16 +19,20 @@ export const StateContextProvider = ({ children }) => {
     "createCampaign"
   );
 
+  const [loading, setLoading] = useState(false);
   const address = useAddress(); //Address of smart wallet
   // const connect = useMetamask(); //Connecting a smart wallet
   const connectWithMetamask = useMetamask();
 
   const connect = async () => {
+    setLoading(true);
     if (window.ethereum && window.ethereum.isMetaMask) {
       try {
         await connectWithMetamask();
       } catch (error) {
         console.error("Connection failed", error);
+      } finally {
+        setLoading(false);
       }
     } else {
       // If using MetaMask mobile
@@ -120,6 +124,7 @@ export const StateContextProvider = ({ children }) => {
         getUserCampaigns,
         donate,
         getDonations,
+        loading,
       }}
     >
       {children}
