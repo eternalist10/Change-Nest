@@ -90,8 +90,7 @@ export const StateContextProvider = ({ children }) => {
   };
 
   const deleteCampaign = async (id) => {
-    const tx = await contract.call("deleteCampaign", [id]);
-    await tx.wait();
+    await contract.call("deleteCampaign", [id]);
   };
 
   return (
