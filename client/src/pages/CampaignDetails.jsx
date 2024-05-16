@@ -29,32 +29,8 @@ function CampaignDetails() {
 
   const handleDonate = async () => {
     setIsLoading(true);
-    // await donate(state.pId, amount);
-    // navigate("/");
-    const tx = {
-      to: state.owner,
-      value: ethers.utils.parseEther(amount).toHexString(),
-    };
-
-    if (window.ethereum) {
-      // If using MetaMask extension
-      try {
-        await window.ethereum.request({
-          method: "eth_sendTransaction",
-          params: [tx],
-        });
-        await donate(state.pId, amount);
-        navigate("/");
-      } catch (error) {
-        console.error("Donation failed:", error);
-      }
-    } else {
-      // If using MetaMask mobile
-      const deepLink = `https://metamask.app.link/send/${
-        state.owner
-      }?value=${ethers.utils.parseEther(amount).toString()}`;
-      window.location.href = deepLink;
-    }
+    await donate(state.pId, amount);
+    navigate("/");
     setIsLoading(false);
   };
 
