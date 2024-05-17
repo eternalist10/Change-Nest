@@ -87,5 +87,3 @@ For any questions or suggestions, feel free to contact:
 - **Repository Owner:** [eternalist10](https://github.com/eternalist10)
 
 ---
-
-Feel free to adjust any section as needed or add any additional details you find necessary.
