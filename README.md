@@ -1,9 +1,3 @@
-
-
-Searched 1 site
-
-Sure, here's a detailed GitHub documentation for the project Pay-To-Care:
-
 Pay-To-Care
 A crowdfunding app built on the Ethereum Blockchain to create and donate to crowdfunding campaigns. Developed using React.js, Tailwind CSS, and Solidity for smart contracts.
 
