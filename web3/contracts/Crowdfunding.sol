@@ -41,6 +41,9 @@ contract CrowdFunding {
 
         Campaign storage campaign = campaigns[_id];
 
+        require(campaign.owner != address(0), "Campaign does not exist");
+        require(block.timestamp < campaign.deadline, "The campaign has ended.");
+        require(amount > 0, "Donation must be greater than 0");
         campaign.donators.push(msg.sender);
         campaign.donations.push(amount);
 
