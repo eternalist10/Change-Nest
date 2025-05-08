@@ -13,7 +13,7 @@ A crowdfunding app built on the Ethereum Blockchain to create and donate to crow
 - [Contact](#contact)
 
 ## Introduction
-Pay-To-Care is a decentralized application (dApp) designed to facilitate crowdfunding through the Ethereum Blockchain. It allows users to create campaigns and make donations securely using smart contracts.
+Change-Nest is a decentralized application (dApp) designed to facilitate crowdfunding through the Ethereum Blockchain. It allows users to create campaigns and make donations securely using smart contracts.
 
 ## Features
 - Create crowdfunding campaigns
@@ -32,8 +32,8 @@ Pay-To-Care is a decentralized application (dApp) designed to facilitate crowdfu
 ### Steps
 1. Clone the repository:
    ```sh
-   git clone https://github.com/eternalist10/Pay-To-Care.git
-   cd Pay-To-Care
+   git clone https://github.com/eternalist10/Change-Nest.git
+   cd Change-Nest
    ```
 
 2. Install dependencies:
