@@ -10,6 +10,15 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
   const handleNavigate = (campaign) => {
     navigate(`/campaign-details/${campaign.title}`, { state: campaign })
   }
+
+  const isValidCampaign = (campaign) => {
+    return (
+      campaign.title &&
+      campaign.image &&
+      campaign.deadline > Date.now() &&
+      campaign.owner !== "0x0000000000000000000000000000000000000000"
+    )
+  };
   
   return (
     <div>
@@ -26,7 +35,7 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
           </p>
         )}
 
-        {!isLoading && campaigns.length > 0 && campaigns.map((campaign) => <FundCard 
+        {!isLoading && campaigns.length > 0 && campaigns.filter(isValidCampaign).map((campaign) => <FundCard 
           key={uuidv4()}
           {...campaign}
           handleClick={() => handleNavigate(campaign)}
