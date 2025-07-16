@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from "uuid";
 import FundCard from './FundCard';
 import { loader } from '../assets';
-import { useStateContext } from '../context';
 
 const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
   const navigate = useNavigate();
@@ -11,12 +10,10 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
   const handleNavigate = (campaign) => {
     navigate(`/campaign-details/${campaign.title}`, { state: campaign })
   }
-
-  const { theme } = useStateContext()
-
+  
   return (
-    <div className='mx-auto'>
-      <h1 className={`font-epilogue font-semibold text-[18px] ${theme === "dark" ? "text-white" : "text-[#1c1c24]"} text-left`}>{title} ({campaigns.length})</h1>
+    <div>
+      <h1 className="font-epilogue font-semibold text-[18px] text-white text-left">{title} ({campaigns.length})</h1>
 
       <div className="flex flex-wrap mt-[20px] gap-[26px]">
         {isLoading && (
@@ -24,12 +21,12 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
         )}
 
         {!isLoading && campaigns.length === 0 && (
-          <p className="font-epilogue font-semibold text-[14px] leading-[5px] text-[#818183]">
+          <p className="font-epilogue font-semibold text-[14px] leading-[30px] text-[#818183]">
             You have not created any campaigns yet
           </p>
         )}
 
-        {!isLoading && campaigns.length > 0 && campaigns.map((campaign) => <FundCard
+        {!isLoading && campaigns.length > 0 && campaigns.map((campaign) => <FundCard 
           key={uuidv4()}
           {...campaign}
           handleClick={() => handleNavigate(campaign)}
