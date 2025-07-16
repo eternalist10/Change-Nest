@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext, useEffect } from "react";
+import React, { useContext, createContext } from "react";
 import {
   useAddress,
   useContract,
@@ -21,45 +21,6 @@ export const StateContextProvider = ({ children }) => {
 
   const address = useAddress(); //Address of smart wallet
   const connect = useMetamask(); //Connecting a smart wallet
-  const [login, setLogin] = useState(false)
-  const [theme, setTheme] = useState("dark")
-
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setLogin(true);
-      if (window.ethereum && window.ethereum.selectedAddress) {
-        connect();
-      }
-    }
-
-    if (localStorage.getItem("theme")) {
-      setTheme(localStorage.getItem("theme"))
-    }
-
-    if (window.ethereum) {
-      window.ethereum.on('accountsChanged', () => {
-        if (!window.ethereum.selectedAddress) {
-          connect()
-        }
-      })
-    }
-  }, [])
-
-  const toggleTheme = (theme) => {
-    setTheme(theme);
-    localStorage.setItem("theme", theme)
-  }
-
-  const handleLogin = (token) => {
-    localStorage.setItem("token", token);
-    setLogin(true);
-    connect();
-  }
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    setLogin(false)
-  }
 
   const publishCampaign = async (form) => {
     try {
@@ -136,15 +97,8 @@ export const StateContextProvider = ({ children }) => {
     <StateContext.Provider
       value={{
         address,
-        login,
-        setLogin,
-        handleLogin,
-        handleLogout,
         contract,
         connect,
-        theme,
-        setTheme,
-        toggleTheme,
         createCampaign: publishCampaign,
         deleteCampaign,
         getCampaigns,
